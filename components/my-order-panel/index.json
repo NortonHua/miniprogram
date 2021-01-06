@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "l-badge": "/miniprogram_npm/lin-ui/badge/index",
+    "l-icon": "/miniprogram_npm/lin-ui/icon/index"
+  }
+}

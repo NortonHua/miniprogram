@@ -1,0 +1,47 @@
+<view class="container-top">
+
+    <view wx:if="{{!orderList||orderList.length==0}}" class="no-order">
+        <view class="content-1">您还没有店内就餐的订单</view>
+        <view class="content-2">快去犒劳一下自己吧！</view>
+        <view class="to-index-btn" bindtap="toIndexPage">去点餐</view>
+    </view>
+
+    <view class="container" wx:if="{{orderList&&orderList.length>0}}">
+        <l-loadmore show="{{bottomLoading}}" type="{{loadingType}}" loading-text="努力加载中..." end-text="—— 一日一甜 ——">
+            <view slot="content" class="container">
+                <block wx:for="{{orderList}}" wx:key="index">
+                    <view class="container">
+                        <view class="header">
+                            <text>订单编号: {{item.order_no}}</text>
+                            <text>{{item.order_type==1?'外卖':'堂食'}}</text>
+                            <text style="color:{{s.statusTextColor(item.status)}}">待取餐</text>
+                        </view>
+                        <view class="main">
+                            <image mode="aspectFit" src="{{item.snap_img}}" class="img"></image>
+                            <view class="description">
+                                <text class="title hidden-text ">{{item.snap_title}}</text>
+                                <view class="counter">
+                                    <text>等 {{item.total_count}} 件商品</text>
+                                </view>
+                            </view>
+                        </view>
+                        <view class="total-container">
+                            <text style="margin-right:20rpx">共计 {{item.total_count}} 件商品 , 实际支付</text>
+                            <l-price class="final-total-price"
+                                     size="32"
+                                     value="{{item.total_price}}"
+                                     color="#157658">
+                            </l-price>
+                        </view>
+
+                        <l-button class="confirmTakeFood" bind:tap="confirmTakeFood" data-idx="{{index}}">确认取餐</l-button>
+
+                    </view>
+                    <!--                    <s-take-order-item bind:callSomeFun="onload" class="item" item="{{item}}"></s-take-order-item>-->
+                </block>
+            </view>
+        </l-loadmore>
+    </view>
+
+
+</view>

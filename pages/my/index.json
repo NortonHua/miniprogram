@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "我的",
+  "usingComponents": {
+    "s-my-banner": "/components/my-banner/index",
+    "l-list": "/miniprogram_npm/lin-ui/list/index",
+    "s-my-order-panel": "/components/my-order-panel/index"
+
+  }
+}

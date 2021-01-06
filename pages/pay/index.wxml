@@ -1,0 +1,51 @@
+<van-cell icon="location-o" title="一日一甜（临港新天地店） / 距离您520km" label="上海市浦东新区临港新天地520号" is-link url="/pages/shop/select?type=pay" />
+<view class="pay-bar">
+	<view class="way-bar">
+		<view class="peisong ziqu {{peisongType == 'zq' ? 'active' : ''}}" bindtap="selected" data-pstype="zq">
+			<van-icon name="shop-collect-o" color="{{peisongType == 'zq' ? '#fff' : '#333'}}" />
+			<view class="ziqu-1">门店自取</view>
+		</view>
+		<view class="peisong ziqu {{peisongType == 'kd' ? 'active' : ''}}" bindtap="selected" data-pstype="kd">
+			<van-icon name="logistics" color="{{peisongType == 'kd' ? '#fff' : '#333'}}" />
+			<view class="ziqu-1">外卖配送</view>
+		</view>
+	</view>
+	<van-divider dashed />
+	<van-field
+		wx:if="{{peisongType == 'zq'}}"
+		size="large"
+    value="{{ mobile }}"
+    label="联系电话"
+		type="number"
+		focus
+		clearable
+		required
+		border="{{false}}"
+    placeholder="请输入手机号码"
+    bind:change="mobileChange">
+  </van-field>
+	<!-- 地址 -->
+	<view class="address-box" wx:if="{{peisongType == 'kd'}}">
+		<s-address bind:address="onChooseAddress"></s-address>
+	</view>
+	<van-divider dashed />
+</view>
+
+<view class="goods-title">商品明细</view>
+<van-row custom-class="detail" wx:for="{{cartData.items}}" wx:key="index">
+	<van-col span="18">
+		<view class="goods-label">{{item.sku.title}}</view>
+		<view class="detail-1">{{item.sku.description}}
+
+		</view>
+	</van-col>
+	<van-col span="3" class="num">x{{item.count}}</van-col>
+	<van-col span="3" class="price">¥{{item.cart_item_price}}</van-col>
+</van-row>
+
+<view class="amount">共计 {{cartData.items.length}} 件商品，小计：¥ {{cartData.totalprice}}</view>
+
+
+<van-field label="备注" value="{{remark}}" clearable input-align="right" placeholder="如需备注请输入" bindblur="remarkChange" />
+<view class="bottom"></view>
+<van-submit-bar price="{{cartData.totalprice*100 }}"  button-text="立即支付" bindtap="goCreateOrder" button-class="pay-btn" />

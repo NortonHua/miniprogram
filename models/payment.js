@@ -1,0 +1,7 @@
+class Payment {
+
+}
+
+export {
+    Payment
+}

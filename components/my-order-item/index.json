@@ -1,0 +1,9 @@
+{
+  "component": true,
+  "usingComponents": {
+    "l-button": "/miniprogram_npm/lin-ui/button/index",
+    "l-loading": "/miniprogram_npm/lin-ui/loading/index",
+    "l-price": "/miniprogram_npm/lin-ui/price/index",
+    "l-countdown": "/miniprogram_npm/lin-ui/countdown/index"
+  }
+}
