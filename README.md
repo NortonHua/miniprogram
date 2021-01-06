@@ -1,0 +1,3 @@
+# miniprogram
+微信点餐小程序
+使用技术：JWT认证、WebSocket协议实现服务端向客户端发送信息，RocketMQ延迟消息实现订单延迟支付
